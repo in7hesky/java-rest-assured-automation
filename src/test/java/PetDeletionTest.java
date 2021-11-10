@@ -1,3 +1,5 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.Flaky;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,8 +17,9 @@ public class PetDeletionTest extends BaseTest {
         addNewPetToStore(existingPetId);
     }
 
-    //flaky
+
     @Test
+    @Description("May fail or not due to feature implementation in SUT")
     public void shouldNotDeletePetTwice() {
         String targetPetPath = PET_ENDPOINT + "/" + existingPetId;
 

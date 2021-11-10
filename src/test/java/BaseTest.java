@@ -4,10 +4,13 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 
 import java.io.IOException;
 import java.util.Properties;
 
+@Execution(ExecutionMode.CONCURRENT)
 public class BaseTest {
     public final RequestSpecification request;
     public final Faker faker = new Faker();

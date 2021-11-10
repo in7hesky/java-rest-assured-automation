@@ -1,3 +1,5 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.Flaky;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
@@ -5,8 +7,9 @@ import java.util.concurrent.TimeUnit;
 
 public class PetFindByStatusTest extends BaseTest {
 
-    //always fails
+
     @Test
+    @Description("Always fails due to feature implementation in SUT")
     public void shouldReactToInvalidStatusValue() {
         String invalidPetStatus = "invalidPetStatus";
 
