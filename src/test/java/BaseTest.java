@@ -36,13 +36,11 @@ public class BaseTest {
         response.then().statusCode(200);
 
         newPet.id = response.body().jsonPath().getLong("id");
-        System.out.println(newPet.id);
         return newPet;
     }
 
     protected Pet getRandomPet() {
         String petName = faker.name().firstName();
-        System.out.println(petName);
         return new Pet(petName, "available");
     }
 }

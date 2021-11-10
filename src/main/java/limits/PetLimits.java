@@ -1,4 +1,4 @@
-package utils;
+package limits;
 
 import java.util.Map;
 

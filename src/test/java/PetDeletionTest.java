@@ -1,16 +1,15 @@
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.hamcrest.Matchers.*;
-
-public class PetDeletion extends BaseTest {
+public class PetDeletionTest extends BaseTest {
 
     private static final String PET_ENDPOINT = "/pet";
 
     private long existingPetId;
 
-    @BeforeMethod
+    @BeforeEach
     public void createPetToDelete() {
         existingPetId = faker.number().numberBetween(3000000000000L, 9000000000000L);
         addNewPetToStore(existingPetId);
@@ -28,15 +27,11 @@ public class PetDeletion extends BaseTest {
                 .then().statusCode(404);
     }
 
-    @Test (dataProvider = "wrongIdFormatProvider")
+    @ParameterizedTest(name = "should not delete pet using invalid id value: {0}")
+    @ValueSource(strings = {"stringId", "0", "-1", "9223372036854775808", "0.3"})
     public void shouldGiveAppropriateErrorMessageWhenStringIdProvided(String wrongIdValue) {
         request.when().delete(PET_ENDPOINT + "/" + wrongIdValue)
                 .then().statusCode(404);
     }
 
-
-    @DataProvider (name = "wrongIdFormatProvider")
-    protected Object[][] getWrongIdFormat () {
-        return new Object[][] {{"stringId"}, {"0"}, {"-1"}, {"9223372036854775808"}, {"0.3"}};
-    }
 }

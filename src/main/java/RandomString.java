@@ -1,5 +1,3 @@
-package utils;
-
 public class RandomString {
     private static final String CHARS_POOL = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             + "abcdefghijklmnopqrstuvxyz";
