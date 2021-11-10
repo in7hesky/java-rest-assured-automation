@@ -23,8 +23,14 @@ public class BaseTest {
         request = RestAssured.given().contentType(ContentType.JSON);
     }
 
-    protected Pet addNewPetToStore() {
+    /**
+     *
+     * @param petId any from 1 to 9223372036854775807 is appropriate, zero for random id
+     */
+    protected Pet addNewPetToStore(long petId) {
         Pet newPet = getRandomPet();
+        if (petId > 0 && petId <= 9223372036854775807L)
+            newPet.id = petId;
 
         Response response = request.body(newPet).post("/pet");
         response.then().statusCode(200);

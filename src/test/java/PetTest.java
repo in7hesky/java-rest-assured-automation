@@ -1,6 +1,6 @@
 import entities.Pet;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
@@ -9,12 +9,14 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class PetTest extends BaseTest {
 
+    public static final String PET_ENDPOINT = "/pet";
+
     @Test
     public void shouldAddNewPet() {
-        Pet expectedPet = addNewPetToStore();
+        Pet expectedPet = addNewPetToStore(0);
 
         Pet actualPet = request.get(
-                "/pet/" + expectedPet.id).as(Pet.class);
+                PET_ENDPOINT + "/" + expectedPet.id).as(Pet.class);
 
         assertThat(actualPet).usingRecursiveComparison()
                 .isEqualTo(expectedPet);
@@ -23,45 +25,38 @@ public class PetTest extends BaseTest {
     @Test
     public void shouldUpdatePetByPut() {
         String newStatus = "unavailable";
-        Pet createdPet = addNewPetToStore();
+        Pet createdPet = addNewPetToStore(0);
 
         createdPet.status = newStatus;
-        request.when().body(createdPet).put("/pet")
+        request.when().body(createdPet).put(PET_ENDPOINT)
                 .then().statusCode(200);
 
-        request.when().get("/pet/" + createdPet.id)
+        request.when().get(PET_ENDPOINT + "/" + createdPet.id)
                 .then().statusCode(200)
                         .and().body("status", equalTo(newStatus));
     }
 
 
-    //todo updateTestByPost
-    @Test
-    public void shouldUpdatePetByPost() {
-        Pet createdPet = addNewPetToStore();
-
-    }
-
     @Test
     public void shouldDeleteCreatedPet() {
-        Pet createdPet = addNewPetToStore();
+        Pet createdPet = addNewPetToStore(0);
 
-        request.when().delete("/pet/" + createdPet.id)
+        request.when().delete(PET_ENDPOINT + "/" + createdPet.id)
                 .then().statusCode(200);
 
-        request.when().get("/pet/" + createdPet.id)
+        request.when().get( PET_ENDPOINT + "/" + createdPet.id)
                 .then().statusCode(404);
     }
 
     @Test
     public void shouldGetListOfAvailablePets() {
-        request.when().get("/pet/findByStatus?status=available")
+        request.when().get(PET_ENDPOINT + "/findByStatus?status=available")
                 .then().statusCode(200);
     }
 
     @Test
     public void shouldGetAvailablePetsInTime() {
-        request.when().get("/pet/findByStatus?status=available")
+        request.when().get(PET_ENDPOINT + "/findByStatus?status=available")
                 .then().statusCode(200)
                 .and().time(Matchers.lessThan(5500L), TimeUnit.MILLISECONDS);
     }
