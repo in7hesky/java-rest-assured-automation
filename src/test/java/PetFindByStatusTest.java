@@ -1,5 +1,4 @@
 import io.qameta.allure.Description;
-import io.qameta.allure.Flaky;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +9,7 @@ public class PetFindByStatusTest extends BaseTest {
 
     @Test
     @Description("Always fails due to feature implementation in SUT")
-    public void shouldReactToInvalidStatusValue() {
+    public void shouldReactToInvalidPetStatusValue() {
         String invalidPetStatus = "invalidPetStatus";
 
         request.when().get("/pet/findByStatus?status=" + invalidPetStatus)
