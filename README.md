@@ -31,6 +31,7 @@ for installation guidance
 
 #### 2.1 Load the project from the GitHub
 Project URL: https://github.com/in7hesky/java-rest-assured-automation
+
 For example, you may load the project using the command line:
 ```
 git clone git@github.com:in7hesky/java-rest-assured-automation.git
