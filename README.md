@@ -1,23 +1,20 @@
 ### Project Description ###
 
 This is an example of REST API testing using Rest Assured. \
-It also uses Allure for reporting and contains a file for easy installing on Jenkins as a demo pipeline. 
-Look for "Reporting" and "Jenkins" sections down below to find out more. 
 
-SUT: Swagger Pet Store - https://petstore.swagger.io/. The service is provided as a training ground 
+SYSTEM UNDER TEST (SUT): Swagger Pet Store - https://petstore.swagger.io/. The service is provided as a training ground 
 for API testing. The data for creating pet entities is generated randomly.
 
 Some of the used tools and libraries:
 - JUNIT 5
 - Rest Assured
-- Jackson Data-bind
 - Allure-Junit5
 - AssertJ
 - Javafaker
 - Jenkins
 
 NOTE: Some API test results may and will occur as failed. That's an expected behavior caused by
-the SUT (System Under Test) implementation
+the SUT implementation
 inconsistencies.
 
 
