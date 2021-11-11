@@ -32,7 +32,7 @@ for installation guidance
 Project URL: https://github.com/in7hesky/restapi-automation
 For example, you may load the project using the command line:
 ```
-git clone https://github.com/kateyurasova/learn-cypress-example.git
+git clone git@github.com:in7hesky/rest-assured-tests-example.git
 ```
 #### 2.2 Execute run command
 As soon as project is loaded, go to the root directory and perform a command:
