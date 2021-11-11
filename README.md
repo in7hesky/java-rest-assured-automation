@@ -5,15 +5,16 @@ This is an example of REST API testing using Rest Assured.
 System Under Test (SUT): Swagger Pet Store - https://petstore.swagger.io/. The service is provided as a training ground 
 for API testing. The data for creating pet entities is generated randomly.
 
-Some of the used tools and libraries:
+List of some tools and libraries used:
 - JUNIT 5
+- Maven
 - Rest Assured
 - Allure-Junit5
 - AssertJ
 - Javafaker
 - Jenkins
 
-NOTE: Some API test results may and will occur as failed. That's an expected behavior caused by
+**NOTE:** Some API test results may and will occur as failed. That's an expected behavior caused by
 the SUT implementation
 inconsistencies.
 
@@ -29,10 +30,10 @@ for installation guidance
 
 
 #### 2.1 Load the project from the GitHub
-Project URL: https://github.com/in7hesky/restapi-automation
+Project URL: https://github.com/in7hesky/java-rest-assured-automation
 For example, you may load the project using the command line:
 ```
-git clone git@github.com:in7hesky/rest-assured-tests-example.git
+git clone git@github.com:in7hesky/java-rest-assured-automation.git
 ```
 #### 2.2 Execute run command
 As soon as project is loaded, go to the root directory and perform a command:
@@ -50,14 +51,17 @@ You may generate a report using:
 ```
 allure serve target/allure-results
 ```
-NOTE: If you want to change the default report data path, you can configure `allure.properties` file located in
+**NOTE:** If you want to change the default report data path, you can configure `allure.properties` file located in
 `src/test/resources` directory.
 
 
 ### Extra: Jenkins integration
 You may also use the `Jenkinsfile` located in the root directory to rapidly build a demo pipeline to see tests runs
-and their results as Allure reports. Make sure you have the "Allure" Jenkins plugin installed.  
-Refer to https://www.jenkins.io/doc/book/pipeline/ in case you want to find out more 
+and their results as Allure reports.
+
+Make sure you have the "Allure" Jenkins plugin installed!
+
+Refer to https://www.jenkins.io/doc/book/pipeline/ in case you want to find out more
 about `Jenkinsfile` usage.
 
 
