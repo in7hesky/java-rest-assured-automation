@@ -2,7 +2,7 @@
 
 This is an example of REST API testing using Rest Assured. \
 
-SYSTEM UNDER TEST (SUT): Swagger Pet Store - https://petstore.swagger.io/. The service is provided as a training ground 
+System Under Test (SUT): Swagger Pet Store - https://petstore.swagger.io/. The service is provided as a training ground 
 for API testing. The data for creating pet entities is generated randomly.
 
 Some of the used tools and libraries:
